@@ -1,2 +1,13 @@
-# rps
-A modern Rock Paper Scissors game built with HTML, CSS, and JavaScript.  Includes achievements, stats, and customizable themes.  Now available as a Progressive Web App (PWA) with offline support and installable on mobile devices.
+# Rock Paper Scissors 🎮✊✋✌️
+
+A stylish Rock Paper Scissors game made with **HTML, CSS, and JavaScript**.  
+✔️ Multiple themes (dark, light, gradient)  
+✔️ Achievements & stats tracking  
+✔️ Smooth animations & modern UI  
+✔️ Works offline as a **PWA** (can be installed on mobile/desktop)  
+
+## 🔗 Live Demo
+[Play the game here](https://asilbeksodiqov.github.io/rps)
+
+## 📸 Preview
+![Game Screenshot](rpsscreenshot.jpg)
