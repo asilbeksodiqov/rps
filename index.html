@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="icon" href="rps192.jpg" type="image/jpeg">
+</head>
+<body>
+
+    <!-- Welcome Screen (Main Menu) -->
+    <div class="screen" id="welcomeScreen">
+        <h1 id="welcomeTitle">
+            <i class="fa-solid fa-hand-rock"></i>
+            <i class="fa-solid fa-hand-paper"></i>
+            <i class="fa-solid fa-hand-scissors"></i>
+            Rock, Paper, Scissors
+        </h1>
+        <div class="main-menu">
+            <button class="menu-btn" data-page="gameScreen"><i class="fa-solid fa-gamepad"></i> Start Game</button>
+            <button class="menu-btn" data-page="settings"><i class="fa-solid fa-gear"></i> Settings</button>
+            <button class="menu-btn" data-page="statistics"><i class="fa-solid fa-chart-simple"></i> Statistics</button>
+            <button class="menu-btn" data-page="contact"><i class="fa-solid fa-phone"></i> Contact</button>
+            <button class="menu-btn" data-page="about"><i class="fa-solid fa-circle-info"></i> About</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div class="screen hidden" id="gameScreen">
+        <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <div class="computer-choice-container">
+            <div class="choice-circle" id="computerChoice">
+                <span>?</span>
+            </div>
+        </div>
+        <div class="user-choices">
+            <button class="user-choice" data-choice="rock">
+                <i class="fa-solid fa-hand-rock"></i><br>Rock
+            </button>
+            <button class="user-choice" data-choice="paper">
+                <i class="fa-solid fa-hand-paper"></i><br>Paper
+            </button>
+            <button class="user-choice" data-choice="scissors">
+                <i class="fa-solid fa-hand-scissors"></i><br>Scissors
+            </button>
+        </div>
+        <div class="scoreboard">
+            <div class="score">
+                <div><i class="fa-solid fa-user"></i> Me</div>
+                <div id="userScore">0</div>
+            </div>
+            <div class="score">
+                <div><i class="fa-solid fa-laptop"></i> Computer</div>
+                <div id="computerScore">0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div class="screen hidden" id="settings">
+        <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <h2 class="page-title" id="settingsTitle"><i class="fa-solid fa-gear"></i> Settings</h2>
+        <div class="settings-container animate-in">
+            <div class="setting-group">
+                <label><i class="fa-solid fa-palette"></i> Theme</label>
+                <select id="themeSelect">
+                    <option value="gradient">Gradient (Default)</option>
+                    <option value="dark">Dark Mode</option>
+                    <option value="light">Light Mode</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label><i class="fa-solid fa-language"></i> Language</label>
+                <select id="languageSelect">
+                    <option value="uz">O'zbekcha</option>
+                    <option value="en">English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label><i class="fa-solid fa-robot"></i> AI Difficulty</label>
+                <select id="aiLevel">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label><i class="fa-solid fa-dice"></i> Rounds to Play</label>
+                <select id="roundsSelect">
+                    <option value="1">1 Round</option>
+                    <option value="3">3 Rounds</option>
+                    <option value="5">5 Rounds</option>
+                    <option value="10">10 Rounds</option>
+                </select>
+            </div>
+            <button id="saveSettings" class="save-btn"><i class="fa-solid fa-floppy-disk"></i> Save Settings</button>
+        </div>
+    </div>
+
+    <!-- Statistics Screen -->
+    <div class="screen hidden" id="statistics">
+        <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <h2 class="page-title" id="statisticsTitle"><i class="fa-solid fa-chart-simple"></i> Statistics</h2>
+        <div class="stats-container animate-in">
+            <div class="stat-item">
+                <div><i class="fa-solid fa-layer-group"></i> Total Games</div>
+                <div id="totalGames">0</div>
+            </div>
+            <div class="stat-item">
+                <div><i class="fa-solid fa-trophy"></i> Wins</div>
+                <div id="totalWins">0</div>
+            </div>
+            <div class="stat-item">
+                <div><i class="fa-solid fa-xmark"></i> Losses</div>
+                <div id="totalLosses">0</div>
+            </div>
+            <div class="stat-item">
+                <div><i class="fa-solid fa-handshake"></i> Ties</div>
+                <div id="totalTies">0</div>
+            </div>
+            <div class="stat-item">
+                <div><i class="fa-solid fa-percent"></i> Win Rate</div>
+                <div id="winRate">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div class="screen hidden" id="contact">
+        <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <h2 class="page-title animate-in" id="contactTitle"><i class="fa-solid fa-phone"></i> Contact</h2>
+        <ul class="contact-list animate-in">
+            <li><a id="contactEmail" href="mailto:asilxonsodiqov@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a></li>
+            <li><a id="contactTelegram" href="https://t.me/Asilbek_Sodiqov" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a></li>
+            <li><a id="contactInstagram" href="https://instagram.com/asilxon_sodiqov" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            <li><a id="contactTwitter" href="https://x.com/Asilxon_Sodiqov" target="_blank"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a></li>
+            <li><a id="contactPhone" href="tel:+998947030806"><i class="fa-solid fa-phone"></i> Call +998 94 703 08 06</a></li>
+        </ul>
+    </div>
+
+    <!-- About Page -->
+    <div class="screen hidden" id="about">
+        <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <h2 class="page-title animate-in" id="aboutTitle"><i class="fa-solid fa-circle-info"></i> About</h2>
+        <div class="about-content animate-in">
+            <p id="aboutDesc1">This Rock, Paper, Scissors game is a fun and interactive web project created by <strong>Asilbek Sodiqov</strong>.</p>
+            <p id="aboutDesc2">Developed in <strong>2025</strong>, this is one of the author's first frontend projects — designed to showcase creativity, animation skills, and user experience design.</p>
+            <p id="aboutDesc3">Built with pure <strong>HTML, CSS, and JavaScript</strong>!</p>
+            <p id="aboutDesc4">Enjoy the game, and feel free to reach out for feedback or collaboration!</p>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay hidden" id="resultModal">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-icon" id="modalIcon"></div>
+            <h2 id="modalMessage"></h2>
+            <div class="modal-restart" id="restartBtn">
+                <i class="fa-solid fa-rotate-right"></i>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+<script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("./service-worker.js")
+        .then(() => console.log("Service Worker registered"))
+        .catch((err) => console.log("Service Worker failed:", err));
+    }
+  </script>
+  
+</body>
+</html>
